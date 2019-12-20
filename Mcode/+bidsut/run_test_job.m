@@ -19,7 +19,7 @@ addpath(mcode_dir);
 init_bids_matlab_ut;
 rslts = bidsut.run_all_tests;
 
-% We have to force Matlab's exit status to communicate our results to CI
+% We have to set Matlab's exit status to communicate our results to CI
 trslt = rslts.table;
 nBad = numel(find(trslt.Failed | trslt.Incomplete));
 if nBad == 0
