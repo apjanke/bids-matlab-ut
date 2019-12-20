@@ -1,6 +1,0 @@
-[submodule "upstream/bids-matlab"]
-	path = upstream/bids-matlab
-	url = https://github.com/bids-standard/bids-matlab
-[submodule "upstream/bids-examples"]
-	path = upstream/bids-examples
-	url = https://github.com/bids-standard/bids-examples
