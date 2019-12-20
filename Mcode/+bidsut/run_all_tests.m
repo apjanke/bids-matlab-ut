@@ -29,7 +29,7 @@ import matlab.unittest.plugins.codecoverage.CoberturaFormat
 suite = TestSuite.fromPackage('bidsut.tests');
 
 runner = TestRunner.withTextOutput;
-reportFile = 'CoverageResults.xml';
+reportFile = 'coverage.xml';
 coveragePlugin = CodeCoveragePlugin.forPackage('bids', ...
     'Producing',CoberturaFormat(reportFile));
 runner.addPlugin(coveragePlugin);
