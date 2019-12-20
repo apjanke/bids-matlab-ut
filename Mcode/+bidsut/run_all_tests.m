@@ -1,5 +1,7 @@
-function run_all_tests
+function out = run_all_tests
 % run_all_tests Run all the tests in bids-matlab-ut
+%
+% rslt = bidsut.run_all_tests
 %
 % Examples:
 % bidsut.run_all_tests
@@ -19,6 +21,6 @@ suites = {
     };
 suite = [suites{:}];
 
-suite.run;
+out = suite.run;
 
 end
