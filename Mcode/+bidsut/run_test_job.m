@@ -23,8 +23,7 @@ nBad = numel(find(trslt.Failed | trslt.Incomplete));
 if nBad == 0
     exit;
 else
-    % Matlab's exit() doesn't support exit statuses, so use Java
-    java.lang.System.exit(1);
+    exit(1);
 end
 
 end
