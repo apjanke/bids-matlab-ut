@@ -1,6 +1,6 @@
 # bids-matlab-ut
 
-Modern unit testing for BIDS-MATLAB
+Modern unit testing for [BIDS-MATLAB](https://github.com/bids-standard/bids-matlab)
 
 [![Build Status](https://travis-ci.org/apjanke/bids-matlab-ut.svg?branch=master)](https://travis-ci.org/apjanke/bids-matlab-ut)
 
