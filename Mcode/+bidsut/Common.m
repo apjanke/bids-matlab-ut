@@ -1,5 +1,5 @@
 classdef Common
-    % Common Properties for the bids-matlab-ut library
+    % Common Properties and common code for the bids-matlab-ut library
     
     methods (Static)
         
@@ -23,6 +23,30 @@ classdef Common
         
         function out = dataDir
             out = fullfile(bidsut.Common.repoRootDir, 'data');
+        end
+        
+        function fetchUpstreamCode
+            repos = {
+                'bids-matlab'
+                'bids-examples'
+                };
+            upstream_dir = bidsut.Common.upstreamDir;
+            origDir = pwd;
+            RAII.cd = onCleanup(@() cd(origDir));
+            cd(upstream_dir);
+            for i = 1:numel(repos)
+                repo = repos{i};
+                if exist(repo, 'dir')
+                    rmdir(repo, 's');
+                end
+                repo_url = ['https://github.com/bids-standard/' repo];
+                cmd = sprintf('git clone %s', repo_url);
+                [status,msg] = system(cmd);
+                if status ~= 0
+                    error('Failed cloning repo %s: %s', repo_url, msg);
+                end
+                fprintf('Fetched repo %s from %s\n', repo, repo_url);
+            end
         end
     end
     
