@@ -11,7 +11,7 @@ import matlab.unittest.TestSuite
 %tests_dir = fullfile(bidsut.Common.repoRootDir, 'Mcode', '+bidsut', '+tests');
 %suite = TestSuite.fromFolder(tests_dir)
 
-
+% So we'll just list them all manually
 suites = {
     TestSuite.fromClass(?bidsut.tests.ExamplesTest)
     TestSuite.fromClass(?bidsut.tests.QueryTest)
