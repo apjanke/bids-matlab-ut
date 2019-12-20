@@ -7,6 +7,9 @@ function out = run_all_tests
 % bidsut.run_all_tests
 
 import matlab.unittest.TestSuite
+import matlab.unittest.TestRunner
+import matlab.unittest.plugins.CodeCoveragePlugin
+import matlab.unittest.plugins.codecoverage.CoberturaFormat
 
 % This doesn't work because "Package folders are invalid inputs for
 % creating test suites." according to Matlab
@@ -14,13 +17,23 @@ import matlab.unittest.TestSuite
 %suite = TestSuite.fromFolder(tests_dir)
 
 % So we'll just list them all manually
-suites = {
-    TestSuite.fromClass(?bidsut.tests.ExamplesTest)
-    TestSuite.fromClass(?bidsut.tests.QueryTest)
-    TestSuite.fromClass(?bidsut.tests.MetadataTest)
-    };
-suite = [suites{:}];
+% suites = {
+%     TestSuite.fromClass(?bidsut.tests.ExamplesTest)
+%     TestSuite.fromClass(?bidsut.tests.QueryTest)
+%     TestSuite.fromClass(?bidsut.tests.MetadataTest)
+%     };
+% suite = [suites{:}];
 
-out = suite.run;
+% Oh, wait, this seems to work:
+
+suite = TestSuite.fromPackage('bidsut.tests');
+
+runner = TestRunner.withTextOutput;
+reportFile = 'CoverageResults.xml';
+coveragePlugin = CodeCoveragePlugin.forPackage('bids', ...
+    'Producing',CoberturaFormat(reportFile));
+runner.addPlugin(coveragePlugin);
+
+out = runner.run(suite);
 
 end

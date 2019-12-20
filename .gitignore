@@ -1,2 +1,3 @@
 /upstream/*
 !/upstream/.dummy
+/CoverageResults.xml

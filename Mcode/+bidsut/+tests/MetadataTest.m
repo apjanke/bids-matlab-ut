@@ -8,25 +8,27 @@ classdef MetadataTest < matlab.unittest.TestCase
             moa_dir = fullfile(bidsut.Common.upstreamDir, 'bids-matlab', ...
                 'tests', 'data', 'MoAEpilot');
             
-            % Expected output from bids query metadata
-            func.RepetitionTime = 7;
-            func_sub_01.RepetitionTime = 10;
-            anat.FlipAngle = 5;
-            anat_sub_01.FlipAngle = 10;
-            anat_sub_01.Manufacturer = 'Siemens';
-            
             % Get and check metadata
             b = bids.layout(moa_dir);
             
+            % test func metadata base directory
+            func.RepetitionTime = 7;
             metadata1 = bids.query(b, 'metadata', 'type', 'bold');
             this.verifyEqual(metadata1.RepetitionTime, func.RepetitionTime);
             
+            % test func metadata subject 01
+            func_sub_01.RepetitionTime = 10;
             metadata2 = bids.query(b, 'metadata', 'sub', '01', 'type', 'bold');
             this.verifyEqual(metadata2.RepetitionTime, func_sub_01.RepetitionTime);
             
+            % test anat metadata base directory
+            anat.FlipAngle = 5;
             metadata3 = bids.query(b, 'metadata', 'type', 'T1w');
             this.verifyEqual(metadata3.FlipAngle, anat.FlipAngle);
             
+            % test anat metadata subject 01
+            anat_sub_01.FlipAngle = 10;
+            anat_sub_01.Manufacturer = 'Siemens';
             metadata4 = bids.query(b, 'metadata', 'sub', '01', 'type', 'T1w');
             this.verifyEqual(metadata4.FlipAngle, anat_sub_01.FlipAngle);
             this.verifyEqual(metadata4.Manufacturer, anat_sub_01.Manufacturer);
