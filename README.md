@@ -1,10 +1,10 @@
 # bids-matlab-ut
 
-Modern unit testing for [BIDS-MATLAB](https://github.com/bids-standard/bids-matlab)
+Modern unit testing for BIDS-MATLAB
 
 [![Build Status](https://travis-ci.org/apjanke/bids-matlab-ut.svg?branch=master)](https://travis-ci.org/apjanke/bids-matlab-ut)
 
-The bids-matlab-ut project is an effort to unit tests and code coverage analysis to the bids-matlab project. This is being done in conjunction with the FieldTrip project, which has an interest in using BIDS-MATLAB in their projects.
+The bids-matlab-ut project is an effort to add modern unit tests and code coverage analysis to the [BIDS-MATLAB](https://github.com/bids-standard/bids-matlab) project. This is being done in conjunction with the [FieldTrip](http://www.fieldtriptoolbox.org/) project, which has an interest in using BIDS-MATLAB in their projects.
 
 # License
 
