@@ -34,6 +34,7 @@ classdef Common
             origDir = pwd;
             RAII.cd = onCleanup(@() cd(origDir));
             cd(upstream_dir);
+            fprintf('Fetching upstream code\n');
             for i = 1:numel(repos)
                 repo = repos{i};
                 if exist(repo, 'dir')
