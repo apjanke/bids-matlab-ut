@@ -13,7 +13,9 @@ mcode_dir = fileparts(fileparts(mfilename('fullpath')));
 addpath(mcode_dir);
 % TODO: This is hinky that we have to fetch the upstream code before
 % loading the bidsut library. Figure out something nicer here.
-bidsut.Common.fetchUpstreamCode;
+% Note: This is disabled for now, because we've included the full upstream
+% source in this repo, so codecov.io works.
+%bidsut.Common.fetchUpstreamCode;
 init_bids_matlab_ut;
 rslts = bidsut.run_all_tests;
 
