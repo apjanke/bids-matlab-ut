@@ -16,6 +16,14 @@ classdef Common
         function out = upstreamDir
             out = fullfile(bidsut.Common.repoRootDir, 'upstream');
         end
+        
+        function out = examplesDir
+            out = fullfile(bidsut.Common.upstreamDir, 'bids-examples');
+        end
+        
+        function out = dataDir
+            out = fullfile(bidsut.Common.repoRootDir, 'data');
+        end
     end
     
 end
