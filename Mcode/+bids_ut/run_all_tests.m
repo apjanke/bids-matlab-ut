@@ -10,6 +10,7 @@ import matlab.unittest.TestSuite
 import matlab.unittest.TestRunner
 import matlab.unittest.plugins.CodeCoveragePlugin
 import matlab.unittest.plugins.codecoverage.CoberturaFormat
+import matlab.unittest.plugins.XMLPlugin;
 
 suite = TestSuite.fromPackage('bids_ut.tests', 'IncludingSubpackages', true);
 
@@ -19,10 +20,16 @@ coveragePlugin = CodeCoveragePlugin.forPackage('bids', ...
     'Producing',CoberturaFormat(reportFile), ...
     'IncludingSubpackages', true);
 runner.addPlugin(coveragePlugin);
+% This JUnit XML plugin is only in Matlab R2015b+
+mkdir('test-output/junit/bids-matlab');
+junitXmlPlugin = XMLPlugin.producingJUnitFormat(...
+    'test-output/junit/bids-matlab/results.xml');
+runner.addPlugin(junitXmlPlugin);
 
 out = runner.run(suite);
 
-junitOutputter = bids_ut.JUnitXmlOutputter('test-output/junit/bids-matlab');
-junitOutputter.writeReport(suite, out);
+% This is our DIY JUnit XML output
+%junitOutputter = bids_ut.JUnitXmlOutputter('test-output/junit/bids-matlab');
+%junitOutputter.writeReport(suite, out);
 
 end
