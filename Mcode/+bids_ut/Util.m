@@ -22,5 +22,30 @@ classdef Util
             details(tf_exclude) = [];
             out = names;
         end
+        
+        function mkdir(newDir)
+            % mkdir Create a directory, raising an error upon failure
+            %
+            % bids_ut.Util.mkdir(newDir)
+            [ok,msg] = mkdir(newDir);
+            if ~ok
+                error('Failed creating dir ''%s'': %s', newDir, msg);
+            end
+        end
+        
+        function out = hostname
+            % hostname Host name of this system
+            if isunix
+                [~,txt] = system('hostname');
+                out = chomp(txt);
+            else
+                out = lower(getenv('COMPUTERNAME'));
+            end
+        end
+                
     end
+end
+
+function out = chomp(str)
+out = regexprep(str, '\r?\n', '');
 end

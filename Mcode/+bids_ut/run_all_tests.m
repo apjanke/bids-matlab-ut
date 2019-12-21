@@ -22,4 +22,7 @@ runner.addPlugin(coveragePlugin);
 
 out = runner.run(suite);
 
+junitOutputter = bids_ut.JUnitXmlOutputter('test-output/junit/bids-matlab');
+junitOutputter.writeReport(suite, out);
+
 end
