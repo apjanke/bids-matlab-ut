@@ -27,10 +27,33 @@ classdef ExamplesTest < matlab.unittest.TestCase
             bids_examples_dir = fullfile(bidsut.Common.upstreamDir, ...
                 'bids-examples');
             example_dir = fullfile(bids_examples_dir, exampleName);
+            
+            % Read the example directory layout
             try
                 b = bids.layout(example_dir);
             catch err
-                this.verifyFail(sprintf('Error raised when reading BIDS directory: %s', ...
+                this.assertFail(sprintf('Error raised when reading BIDS directory: %s', ...
+                    err.message));
+            end
+            
+            % Do some basic queries
+            % We'll just check that these queries run without error,
+            % instead of checking their results; that's done in
+            % MetadataTest.
+            try
+                md = bids.query(b, 'metadata');
+                this.verifyNotEmpty(md, 'metadata from bids.query was empty');
+            catch err
+                this.verifyFail(sprintf('Error on bids.query(b, ''metadata''): %s', ...
+                    err.message));
+            end
+            
+            % See if report runs
+            try
+                rpt = evalc('bids.report(b)');
+                this.verifyNotEmpty(rpt, 'Report was not empty');
+            catch err
+                this.verifyFail(sprintf('Error on bids.report(b): %s', ...
                     err.message));
             end
         end
