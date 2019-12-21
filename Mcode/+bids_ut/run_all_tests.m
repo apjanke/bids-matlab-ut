@@ -49,7 +49,7 @@ runner.addPlugin(junitXmlPlugin);
 
 out = runner.run(suite);
 
-% This is our DIY JUnit XML output
+% This is our DIY JUnit XML output for use with pre-R2015b
 % TODO: Replace this with a custom version of XMLPlugin
 %junitOutputter = bids_ut.JUnitXmlOutputter([testOutDir '/junit/bids-matlab']);
 %junitOutputter.writeReport(suite, out);
