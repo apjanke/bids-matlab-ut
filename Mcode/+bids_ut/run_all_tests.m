@@ -21,6 +21,7 @@ coveragePlugin = CodeCoveragePlugin.forPackage('bids', ...
     'IncludingSubpackages', true);
 runner.addPlugin(coveragePlugin);
 % This JUnit XML plugin is only in Matlab R2015b+
+% TODO: This should maybe be done wrt Common.repoRootDir instead of pwd
 mkdir('test-output/junit/bids-matlab');
 junitXmlPlugin = XMLPlugin.producingJUnitFormat(...
     'test-output/junit/bids-matlab/results.xml');
