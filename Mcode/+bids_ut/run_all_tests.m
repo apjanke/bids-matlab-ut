@@ -20,7 +20,9 @@ coveragePlugin = CodeCoveragePlugin.forPackage('bids', ...
     'IncludingSubpackages', true);
 runner.addPlugin(coveragePlugin);
 
+fprintf('run_all_tests: starting test run; pwd=%s\n', pwd);
 out = runner.run(suite);
+fprintf('run_all_tests: finished test run; pwd=%s\n', pwd);
 
 junitOutputter = bids_ut.JUnitXmlOutputter('test-output/junit/bids-matlab');
 junitOutputter.writeReport(suite, out);
