@@ -12,12 +12,12 @@ function run_test_job
 mcode_dir = fileparts(fileparts(mfilename('fullpath')));
 addpath(mcode_dir);
 % TODO: This is hinky that we have to fetch the upstream code before
-% loading the bidsut library. Figure out something nicer here.
+% loading the bids_ut library. Figure out something nicer here.
 % Note: This is disabled for now, because we've included the full upstream
 % source in this repo, so codecov.io works.
-%bidsut.Common.fetchUpstreamCode;
+%bids_ut.Common.fetchUpstreamCode;
 init_bids_matlab_ut;
-rslts = bidsut.run_all_tests;
+rslts = bids_ut.run_all_tests;
 
 % We have to set Matlab's exit status to communicate our results to CI
 trslt = rslts.table;

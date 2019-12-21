@@ -2,4 +2,4 @@ pool:
   vmImage: 'Ubuntu 16.04'
 steps:
   - script: wget -qO- --retry-connrefused https://storage.googleapis.com/matlabimagesus/public/install.sh | sudo -E bash
-  - script: matlab -batch "cd Mcode; bidsut.run_test_job"
+  - script: matlab -batch "cd Mcode; bids_ut.run_test_job"

@@ -14,15 +14,15 @@ classdef Common
         end
         
         function out = upstreamDir
-            out = fullfile(bidsut.Common.repoRootDir, 'upstream');
+            out = fullfile(bids_ut.Common.repoRootDir, 'upstream');
         end
         
         function out = examplesDir
-            out = fullfile(bidsut.Common.upstreamDir, 'bids-examples');
+            out = fullfile(bids_ut.Common.upstreamDir, 'bids-examples');
         end
         
         function out = dataDir
-            out = fullfile(bidsut.Common.repoRootDir, 'data');
+            out = fullfile(bids_ut.Common.repoRootDir, 'data');
         end
         
         function fetchUpstreamCode
@@ -30,7 +30,7 @@ classdef Common
                 'bids-matlab'
                 'bids-examples'
                 };
-            upstream_dir = bidsut.Common.upstreamDir;
+            upstream_dir = bids_ut.Common.upstreamDir;
             origDir = pwd;
             RAII.cd = onCleanup(@() cd(origDir));
             cd(upstream_dir);

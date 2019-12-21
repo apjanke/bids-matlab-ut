@@ -5,7 +5,7 @@ classdef Util
         function [out,details] = readdir(dir_path)
             % readdir Read directory contents, excluding '.' and '..'
             %
-            % [out,details] = bidsut.Util.readdir(dir_path)
+            % [out,details] = bids_ut.Util.readdir(dir_path)
             %
             % Returns a cellstr vector containing the names of files inside
             % the dir_path. Also returns details, a struct array in the form

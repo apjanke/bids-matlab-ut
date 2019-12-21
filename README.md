@@ -22,11 +22,11 @@ To use bids-matlab-ut, clone its repo to your local hard drive using git:
 git clone https://github.com/apjanke/bids-matlab-ut
 ```
 
-Fetch the upstream repos by running `bidsut.Common.fetchUpstreamCode`, or manually clone the `bids-standard` repos for `bids-matlab` and `bids-examples` into the `upstream/` directory.
+Fetch the upstream repos by running `bids_ut.Common.fetchUpstreamCode`, or manually clone the `bids-standard` repos for `bids-matlab` and `bids-examples` into the `upstream/` directory.
 
 Load the library by running `init_bids_matlab_ut` from the `Mcode` directory.
 
-Then run the unit tests found in `Mcode/+bidsut/+tests` using Matlab's Unit Testing framework.
+Then run the unit tests found in `Mcode/+bids_ut/+tests` using Matlab's Unit Testing framework.
 
 # Author
 
