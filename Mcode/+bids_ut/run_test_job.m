@@ -16,8 +16,6 @@ function out = run_test_job
 % TODO: This may have to become CI-provider-specific, since Travis,
 % Circle, and Azure Pipelines will all want different output formats.
 
-fprintf('run_test_job started: pwd=%s\n', pwd);
-
 mcode_dir = fileparts(fileparts(mfilename('fullpath')));
 addpath(mcode_dir);
 % TODO: This is hinky that we have to fetch the upstream code before
@@ -26,9 +24,7 @@ addpath(mcode_dir);
 % source in this repo, so codecov.io works.
 %bids_ut.Common.fetchUpstreamCode;
 init_bids_matlab_ut;
-fprintf('init_bids_matlab_ut done: pwd=%s\n', pwd);
 rslts = bids_ut.run_all_tests;
-fprintf('bids_ut.run_all_tests done: pwd=%s\n', pwd);
 
 % We have to set Matlab's exit status to communicate our results to CI
 trslt = rslts.table;

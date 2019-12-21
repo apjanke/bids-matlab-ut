@@ -70,7 +70,6 @@ end
 p('</testsuites>\n');
 
 fprintf('Wrote tests results to %s\n', file);
-fprintf('Current dir is: %s\n', pwd);
 end
 
 
