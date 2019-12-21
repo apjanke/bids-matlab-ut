@@ -50,6 +50,26 @@ classdef QueryTest < matlab.unittest.TestCase
             sessions = {'01','02'};
             this.verifyEqual(bids.query(b2,'sessions'),sessions)
             this.verifyEqual(bids.query(b2,'sessions','sub','02'),sessions)
+            
+            % Check that bogus queries raise error
+            try
+                bids.query(b);
+                this.verifyFail('bids.query(b) should have errored');
+            catch
+                this.verifyTrue(true, 'bids.query(b) should have errored');
+            end
+            try
+                bids.query(b,'bogusquery');
+                this.verifyFail('bids.query(b,''bogusquery'') should have errored');
+            catch
+                this.verifyTrue(true, 'bids.query(b,''bogusquery'') should have errored');
+            end
+            try
+                bids.query(b,'metadata', 'key_with_no_val');
+                this.verifyFail('bids.query(b,''metadata'',''key_with_no_val'') should have errored');
+            catch
+                this.verifyTrue(true, 'bids.query(b,''metadata'',''key_with_no_val'') should have errored');
+            end
         end
     end
     
