@@ -3,3 +3,10 @@ pool:
 steps:
   - script: wget -qO- --retry-connrefused https://storage.googleapis.com/matlabimagesus/public/install.sh | sudo -E bash
   - script: matlab -batch "addpath Mcode; bids_ut.run_test_job"
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFiles: test-output/**/*.xml
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFiles: coverage.xml
+  
