@@ -8,5 +8,5 @@ steps:
       testResultsFiles: test-output/**/*.xml
   - task: PublishTestResults@2
     inputs:
-      testResultsFiles: coverage.xml
+      testResultsFiles: test-output/cobertura/coverage.xml
   

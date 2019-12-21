@@ -1,4 +1,1 @@
-#/upstream/*
-!/upstream/.dummy
-/coverage*.xml
 /test-output
