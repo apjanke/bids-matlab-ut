@@ -49,9 +49,21 @@ classdef ExamplesTest < matlab.unittest.TestCase
             end
             
             % See if report runs
+            
+            % These are known empty because they contain EEG data that is
+            % not yet supported by bids.report.
+            % See https://github.com/bids-standard/bids-matlab/issues/35
+            expectedEmptyReports = {
+                'ieeg_filtered_speech'
+                'ieeg_motorMiller2007'
+                };
             try
                 rpt = evalc('bids.report(b)');
-                this.verifyNotEmpty(rpt, 'Report was not empty');
+                if ismember(exampleName, expectedEmptyReports)
+                    this.verifyEmpty(rpt, 'Report was empty, as expected');
+                else
+                    this.verifyNotEmpty(rpt, 'Report was not empty');
+                end
             catch err
                 this.verifyFail(sprintf('Error on bids.report(b): %s', ...
                     err.message));
