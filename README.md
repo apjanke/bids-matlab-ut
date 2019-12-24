@@ -6,8 +6,6 @@ Modern unit testing for BIDS-MATLAB
 
 [![codecov](https://codecov.io/gh/apjanke/bids-matlab-ut/branch/master/graph/badge.svg)](https://codecov.io/gh/apjanke/bids-matlab-ut)
 
-(Note: These are expected to be failing right now; not all the unit tests have been updated and checked for correctness.)
-
 The bids-matlab-ut project is an effort to add modern unit tests and code coverage analysis to the [BIDS-MATLAB](https://github.com/bids-standard/bids-matlab) project. This is being done in conjunction with the [FieldTrip](http://www.fieldtriptoolbox.org/) project, which has an interest in using BIDS-MATLAB in their projects.
 
 # License
@@ -22,9 +20,7 @@ To use bids-matlab-ut, clone its repo to your local hard drive using git:
 git clone https://github.com/apjanke/bids-matlab-ut
 ```
 
-Fetch the upstream repos by running `bids_unittest.Common.fetchUpstreamCode`, or manually clone the `bids-standard` repos for `bids-matlab` and `bids-examples` into the `upstream/` directory.
-
-Load the library by running `init_bids_matlab_ut` from the `Mcode` directory.
+Load the library by running `bids_unittest.init_bids_matlab_ut` from the `Mcode` directory.
 
 Then run the unit tests found in `Mcode/+bids_unittest/+tests` using Matlab's Unit Testing framework.
 
