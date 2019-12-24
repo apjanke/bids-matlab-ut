@@ -1,10 +1,14 @@
 function result = query(BIDS,query,varargin)
-% Query a directory structure formated according to the BIDS standard
+% QUERY Query a directory structure formatted according to the BIDS standard
 % FORMAT result = bids.query(BIDS,query,...)
 % BIDS   - BIDS directory name or BIDS structure (from bids.layout)
 % query  - type of query: {'data', 'metadata', 'sessions', 'subjects',
 %          'runs', 'tasks', 'runs', 'types', 'modalities'}
 % result - outcome of query
+%
+% See also:
+% bids
+
 %__________________________________________________________________________
 %
 % BIDS (Brain Imaging Data Structure): https://bids.neuroimaging.io/
