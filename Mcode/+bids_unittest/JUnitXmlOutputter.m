@@ -44,10 +44,11 @@ for iSuite = 1:numel(suites)
     suite = suites(iSuite);
     tests = suite.tests;
     rslts = suite.rslts;
-    tbl = table(suite.rslts);
-    nTests = size(tbl, 1);
-    nFailed = numel(find(tbl.Failed));
-    duration = sum(tbl.Duration);
+    s.Failed = [rslts.Failed];
+    s.Duration = [rslts.Duration];
+    nTests = numel(rslts);
+    nFailed = numel(find(s.Failed));
+    duration = sum(s.Duration);
     p(['  <testsuite id="%d" name="%s" tests="%d" failures="%d" ' ...
         'time="%f" hostname="%s">\n'], ...
         iSuite-1, suite.testClass, nTests, nFailed, duration, bids_unittest.Util.hostname);

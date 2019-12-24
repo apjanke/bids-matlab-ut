@@ -27,8 +27,9 @@ bids_unittest.init_bids_matlab_ut;
 rslts = bids_unittest.run_all_tests;
 
 % We have to set Matlab's exit status to communicate our results to CI
-trslt = rslts.table;
-nBad = numel(find(trslt.Failed | trslt.Incomplete));
+failed = [rslts.Failed];
+incomplete = [rslts.Incomplete];
+nBad = numel(find(failed | incomplete));
 if nBad == 0
     exit_status = 0;
 else
