@@ -23,7 +23,7 @@ addpath(mcode_dir);
 % Note: This is disabled for now, because we've included the full upstream
 % source in this repo, so codecov.io works.
 %bids_unittest.Common.fetchUpstreamCode;
-init_bids_matlab_ut;
+bids_unittest.init_bids_matlab_ut;
 rslts = bids_unittest.run_all_tests;
 
 % We have to set Matlab's exit status to communicate our results to CI
