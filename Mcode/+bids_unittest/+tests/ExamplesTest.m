@@ -2,14 +2,14 @@ classdef ExamplesTest < matlab.unittest.TestCase
     % ExamplesTest Tests all the examples in bids-examples
     
     properties (TestParameter)
-        exampleName = bids_ut.tests.ExamplesTest.getExampleNames;
+        exampleName = bids_unittest.tests.ExamplesTest.getExampleNames;
     end
     
     methods (Static)
         function out = getExampleNames
-            bids_examples_dir = fullfile(bids_ut.Common.upstreamDir, ...
+            bids_examples_dir = fullfile(bids_unittest.Common.upstreamDir, ...
                 'bids-examples');
-            [files,d] = bids_ut.Util.readdir(bids_examples_dir);
+            [files,d] = bids_unittest.Util.readdir(bids_examples_dir);
             tf_dir = [d.isdir];
             subdirs = files(tf_dir);
             tf_exclude = startsWith(subdirs, '.');
@@ -24,7 +24,7 @@ classdef ExamplesTest < matlab.unittest.TestCase
     
     methods (Test)
         function testExample(this, exampleName)
-            bids_examples_dir = fullfile(bids_ut.Common.upstreamDir, ...
+            bids_examples_dir = fullfile(bids_unittest.Common.upstreamDir, ...
                 'bids-examples');
             example_dir = fullfile(bids_examples_dir, exampleName);
             

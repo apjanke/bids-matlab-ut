@@ -1,7 +1,7 @@
 function out = run_all_tests
 % run_all_tests Run all the tests in bids-matlab-ut
 %
-% rslt = bids_ut.run_all_tests
+% rslt = bids_unittest.run_all_tests
 %
 % Runs all the tests in bids-matlab-ut, presenting results on the command
 % line and producing results output files.
@@ -17,7 +17,7 @@ function out = run_all_tests
 %     coverage.xml      - Cobertura format code coverage report
 %
 % Examples:
-% bids_ut.run_all_tests
+% bids_unittest.run_all_tests
 
 import matlab.unittest.TestSuite
 import matlab.unittest.TestRunner
@@ -32,7 +32,7 @@ if exist(testOutDir, 'dir')
 end
 mkdir(testOutDir);
 
-suite = TestSuite.fromPackage('bids_ut.tests', 'IncludingSubpackages', true);
+suite = TestSuite.fromPackage('bids_unittest.tests', 'IncludingSubpackages', true);
 
 runner = TestRunner.withTextOutput;
 mkdir([testOutDir '/cobertura']);
@@ -51,7 +51,7 @@ out = runner.run(suite);
 
 % This is our DIY JUnit XML output for use with pre-R2015b
 % TODO: Replace this with a custom version of XMLPlugin
-%junitOutputter = bids_ut.JUnitXmlOutputter([testOutDir '/junit/bids-matlab']);
+%junitOutputter = bids_unittest.JUnitXmlOutputter([testOutDir '/junit/bids-matlab']);
 %junitOutputter.writeReport(suite, out);
 
 end

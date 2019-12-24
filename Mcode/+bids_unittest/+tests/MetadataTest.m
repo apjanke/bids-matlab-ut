@@ -5,7 +5,7 @@ classdef MetadataTest < matlab.unittest.TestCase
     
     methods (Test)
         function testMetaDataOnMoAEpilot(this)
-            moa_dir = fullfile(bids_ut.Common.upstreamDir, 'bids-matlab', ...
+            moa_dir = fullfile(bids_unittest.Common.upstreamDir, 'bids-matlab', ...
                 'tests', 'data', 'MoAEpilot');
             
             % Get and check metadata

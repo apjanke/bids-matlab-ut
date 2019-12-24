@@ -1,5 +1,5 @@
 language: minimal
 dist: xenial
 install: wget -qO- --retry-connrefused https://storage.googleapis.com/matlabimagesus/public/install.sh | sudo -E bash
-script: matlab -batch "cd Mcode; bids_ut.run_test_job"
+script: matlab -batch "cd Mcode; bids_unittest.run_test_job"
 after_script: bash <(curl -s https://codecov.io/bash)

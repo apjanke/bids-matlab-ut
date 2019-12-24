@@ -1,8 +1,8 @@
 function out = run_test_job
 % run_test_job Entry point for CI execution of jobs
 %
-% bids_ut.run_test_job
-% status = bids_ut.run_test_job
+% bids_unittest.run_test_job
+% status = bids_unittest.run_test_job
 %
 % This will fetch the necessary upstream code, initialize the
 % bids-matlab-ut library, and run all the tests in it.
@@ -19,12 +19,12 @@ function out = run_test_job
 mcode_dir = fileparts(fileparts(mfilename('fullpath')));
 addpath(mcode_dir);
 % TODO: This is hinky that we have to fetch the upstream code before
-% loading the bids_ut library. Figure out something nicer here.
+% loading the bids_unittest library. Figure out something nicer here.
 % Note: This is disabled for now, because we've included the full upstream
 % source in this repo, so codecov.io works.
-%bids_ut.Common.fetchUpstreamCode;
+%bids_unittest.Common.fetchUpstreamCode;
 init_bids_matlab_ut;
-rslts = bids_ut.run_all_tests;
+rslts = bids_unittest.run_all_tests;
 
 % We have to set Matlab's exit status to communicate our results to CI
 trslt = rslts.table;

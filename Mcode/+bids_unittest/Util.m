@@ -5,7 +5,7 @@ classdef Util
         function [out,details] = readdir(dir_path)
             % readdir Read directory contents, excluding '.' and '..'
             %
-            % [out,details] = bids_ut.Util.readdir(dir_path)
+            % [out,details] = bids_unittest.Util.readdir(dir_path)
             %
             % Returns a cellstr vector containing the names of files inside
             % the dir_path. Also returns details, a struct array in the form
@@ -26,7 +26,7 @@ classdef Util
         function mkdir(newDir)
             % mkdir Create a directory, raising an error upon failure
             %
-            % bids_ut.Util.mkdir(newDir)
+            % bids_unittest.Util.mkdir(newDir)
             [ok,msg] = mkdir(newDir);
             if ~ok
                 error('Failed creating dir ''%s'': %s', newDir, msg);

@@ -14,7 +14,7 @@ classdef JUnitXmlOutputter
         end
         
         function writeReport(this, testSuite, results)
-            bids_ut.Util.mkdir(this.outputDir);
+            bids_unittest.Util.mkdir(this.outputDir);
             reportFile = fullfile(this.outputDir, 'results.xml');
             writeXmlReport(reportFile, testSuite, results);
         end
@@ -50,7 +50,7 @@ for iSuite = 1:numel(suites)
     duration = sum(tbl.Duration);
     p(['  <testsuite id="%d" name="%s" tests="%d" failures="%d" ' ...
         'time="%f" hostname="%s">\n'], ...
-        iSuite-1, suite.testClass, nTests, nFailed, duration, bids_ut.Util.hostname);
+        iSuite-1, suite.testClass, nTests, nFailed, duration, bids_unittest.Util.hostname);
     for i = 1:numel(tests)
         test = tests(i);
         rslt = rslts(i);

@@ -3,7 +3,7 @@ classdef QueryTest < matlab.unittest.TestCase
     
     methods (Test)
         function testExampleDs007(this)
-            ex_dir = fullfile(bids_ut.Common.examplesDir, 'ds007');
+            ex_dir = fullfile(bids_unittest.Common.examplesDir, 'ds007');
             b = bids.layout(ex_dir);
             
             subjs = arrayfun(@(x) sprintf('%02d',x), 1:20, 'UniformOutput',false);
