@@ -32,6 +32,15 @@ classdef QueryTest < matlab.unittest.TestCase
                 'stopsignalwithmanualresponse','type','bold');
             this.verifyTrue(iscellstr(bold)); %#ok<ISCLSTR>
             this.verifySize(bold, [1 1]);
+            
+            % Alternate struct format for query input
+            % This is an undocumented backdoor I found in the local
+            % parse_query function; I'm not sure we should actually be
+            % testing it -apjanke
+            query_struct = struct('sub','05','run','02','task', ...
+                'stopsignalwithmanualresponse','type','bold');
+            bold = bids.query(b,'data',query_struct);
+            this.verifyTrue(iscellstr(bold), 'bold query still works with struct input'); %#ok<ISCLSTR>
 
             md = bids.query(b,'metadata','sub','05','run','02','task','stopsignalwithmanualresponse','type','bold');
             this.verifyTrue(isstruct(md) & isfield(md,'RepetitionTime') & isfield(md,'TaskName'));
