@@ -47,6 +47,17 @@ classdef QueryTest < matlab.unittest.TestCase
             this.verifyTrue(md.RepetitionTime == 2);
             this.verifyEqual(md.TaskName,'stop signal with manual response');
 
+            md = bids.query(b,'metadata','sub','05','run','02','task',...
+                'stopsignalwithmanualresponse','type','bold', 'target','RepetitionTime');
+            this.verifyEqual(md, 2, 'querying ''target'',''RepetitionTime'' worked');
+            lastwarn('');
+            md = bids.query(b,'metadata','sub','05','run','02','task',...
+                'stopsignalwithmanualresponse','type','bold', 'target','NonexistentField');
+            this.verifyEmpty(md, 'querying ''target'',''NonexistentField'' returned empty');
+            [warnMsg,warnId] = lastwarn;
+            this.verifyEmpty(warnId, 'warning on nonexistent metadata target had empty ID');
+            this.verifyMatches(warnMsg, 'Non-existent field for metadata');            
+
             t1 = bids.query(b,'data','type','T1w');
             this.verifyTrue(iscellstr(t1)); %#ok<ISCLSTR>
             this.verifyEqual(numel(t1), numel(bids.query(b,'subjects')));
