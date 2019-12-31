@@ -39,6 +39,14 @@ classdef TsvreadTest < matlab.unittest.TestCase
                 'c', {[2 4 6]'});
             x = bids.util.tsvread('foo.csv');
             this.verifyEqual(x, foo, 'foo.csv worked');
+            x = bids.util.tsvread('foo.csv', 'b');
+            this.verifyEqual(x, foo.b, 'tsvread(foo.csv, ''b'') worked');
+            this.verifyError(@() bids.util.tsvread('foo.csv', 'nosuchfield'), '', ...
+                'tsvread(foo.csv, ''nosuchfield'') errors');
+            x = bids.util.tsvread('foo.csv', 3);
+            this.verifyEqual(x, foo.c, 'tsvread(foo.csv, 3) worked');
+            this.verifyError(@() bids.util.tsvread('foo.csv', 4), '', ...
+                'tsvread(foo.csv, 4 (out-of-range)) errors');
             
             x = bids.util.tsvread('foo.json');
             this.verifyNotEmpty(x, 'foo.json returned something');
