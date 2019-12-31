@@ -23,6 +23,13 @@ classdef TsvreadTest < matlab.unittest.TestCase
             
             x = bids.util.tsvread('magic.csv');
             this.verifyEqual(x, m, 'magic.csv worked');
+            % Numeric field extraction
+            x = bids.util.tsvread('magic.csv', 2);
+            this.verifyEqual(x, m(:,2), 'tsvread(magic.csv, 2) worked');
+            this.verifyError(@() bids.util.tsvread('magic.csv', 42), '', ...
+                'tsvread(magic.csv, 42 (out-of-range)) errors');
+            this.verifyError(@() bids.util.tsvread('magic.csv', 'foo'), '', ...
+                'tsvread(magic.csv, ''foo'' (non-numeric)) errors');
             
             x = bids.util.tsvread('magic.csv.gz');
             this.verifyEqual(x, m, 'magic.csv.gz worked');
