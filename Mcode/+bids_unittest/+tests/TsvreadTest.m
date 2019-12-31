@@ -40,8 +40,15 @@ classdef TsvreadTest < matlab.unittest.TestCase
             x = bids.util.tsvread('foo.csv');
             this.verifyEqual(x, foo, 'foo.csv worked');
             
+            x = bids.util.tsvread('foo.json');
+            this.verifyNotEmpty(x, 'foo.json returned something');
+            
             this.verifyError(@() bids.util.tsvread('helloworld.markdown'), '', ...
                 'Unrecognized file format errors');
+
+            this.verifyError(@() bids.util.tsvread('helloworld.markdown.gz'), '', ...
+                'Unrecognized file format inside .gz errors');
+            
         end
         
     end
