@@ -24,13 +24,30 @@ classdef Util
         end
         
         function mkdir(newDir)
-            % mkdir Create a directory, raising an error upon failure
+            % mkdir Create a directory, raising an error on failure
             %
             % bids_unittest.Util.mkdir(newDir)
             [ok,msg] = mkdir(newDir);
             if ~ok
                 error('Failed creating dir ''%s'': %s', newDir, msg);
             end
+        end
+        
+        function fid = fopen(file, mode)
+            % fopen fopen a file, raising an error on failure
+            if nargin < 2 || isempty(mode); mode = 'r'; end
+            [fid,msg] = fopen(file, mode);
+            if fid < 1
+                error('Failed opening file ''%s'' in mode ''%s'': %s', ...
+                    file, mode, msg);
+            end
+        end
+        
+        function spew(file, text)
+            % spew Write text to a file, replacing contents
+            fid = bids_unittest.Util.fopen(file, 'w');
+            fprintf(fid, '%s', text);
+            fclose(fid);
         end
         
         function out = hostname
@@ -42,7 +59,7 @@ classdef Util
                 out = lower(getenv('COMPUTERNAME'));
             end
         end
-                
+
     end
 end
 
