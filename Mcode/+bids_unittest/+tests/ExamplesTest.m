@@ -7,8 +7,7 @@ classdef ExamplesTest < matlab.unittest.TestCase
     
     methods (Static)
         function out = getExampleNames
-            bids_examples_dir = fullfile(bids_unittest.Common.upstreamDir, ...
-                'bids-examples');
+            bids_examples_dir = bids_unittest.Common.examplesDir;
             [files,d] = bids_unittest.Util.readdir(bids_examples_dir);
             tf_dir = [d.isdir];
             subdirs = files(tf_dir);
@@ -24,8 +23,7 @@ classdef ExamplesTest < matlab.unittest.TestCase
     
     methods (Test)
         function testExample(this, exampleName)
-            bids_examples_dir = fullfile(bids_unittest.Common.upstreamDir, ...
-                'bids-examples');
+            bids_examples_dir = bids_unittest.Common.examplesDir;
             example_dir = fullfile(bids_examples_dir, exampleName);
             
             % Read the example directory layout

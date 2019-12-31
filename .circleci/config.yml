@@ -5,6 +5,7 @@ jobs:
       image: ubuntu-1604:201903-01
     steps:
       - checkout
+      - run: git clone https://github.com/bids-standard/bids-examples
       - run: wget -qO- --retry-connrefused https://storage.googleapis.com/matlabimagesus/public/install.sh | sudo -E bash
       - run: matlab -batch "addpath Mcode; bids_unittest.run_test_job"
       - store_test_results:

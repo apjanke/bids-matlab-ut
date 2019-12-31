@@ -18,7 +18,12 @@ classdef Common
         end
         
         function out = examplesDir
-            out = fullfile(bids_unittest.Common.upstreamDir, 'bids-examples');
+            out = fullfile(bids_unittest.Common.repoRootDir, 'bids-examples');
+            if ~exist(out, 'dir')
+                error(['bids-examples is not present at %s.' ...
+                    'Please clone it from https://github.com/bids-standard/bids-examples'], ...
+                    out);
+            end
         end
         
         function out = dataDir
